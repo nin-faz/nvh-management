@@ -1,0 +1,14 @@
+{
+  "name": "nvh-management",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site vitrine N.V.H Management — agence de footballeurs professionnels",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}
