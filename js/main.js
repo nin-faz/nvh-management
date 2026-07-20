@@ -60,13 +60,11 @@ fileInput.addEventListener('change', () => {
   });
 });
 
-// Formulaire : honeypot + validation.
-// Pré-câblé Netlify Forms : en prod, retirer le preventDefault (voir README).
+// Formulaire : honeypot + validation Netlify Forms
 const form = document.getElementById('contactForm');
 const note = document.getElementById('formNote');
 form.addEventListener('submit', e => {
-  e.preventDefault();
-  if (form.website.value) return; // bot piégé
+  if (form.website.value) { e.preventDefault(); return; } // bot piégé
   let ok = true;
   const check = (name, valid) => {
     const f = form.querySelector(`[data-field="${name}"]`);
@@ -76,9 +74,7 @@ form.addEventListener('submit', e => {
   check('objet', form.objet.value.trim().length > 1);
   check('email', /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(form.email.value.trim()));
   check('message', form.message.value.trim().length > 4);
-  note.textContent = ok
-    ? 'Maquette : formulaire valide — l\u2019envoi sera activé au déploiement (Netlify Forms).'
-    : '';
+  if (!ok) e.preventDefault();
 });
 
 
@@ -147,12 +143,56 @@ if (RM || !hasGSAP) {
     });
   });
 
-  // Révélations
-  gsap.utils.toArray('.reveal').forEach(el => {
-    gsap.from(el, {
-      y: 44, autoAlpha: 0, duration: 1, ease: 'power3.out',
-      scrollTrigger: { trigger: el, start: 'top 86%' }
+  // Révélations différenciées
+  // 1. Eyebrows — slide gauche
+  gsap.utils.toArray('.eyebrow.reveal').forEach(el => {
+    gsap.from(el, { x: -20, autoAlpha: 0, duration: 0.65, ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 89%' } });
+  });
+
+  // 2. Titres — dévoilement vertical propre
+  gsap.utils.toArray('.section-title.reveal').forEach(el => {
+    gsap.from(el, { y: 28, autoAlpha: 0, duration: 1.1, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 88%' } });
+  });
+
+  // 3. Team cards — stagger par grille
+  gsap.utils.toArray('.team-grid').forEach(grid => {
+    gsap.from(grid.querySelectorAll('.team-card'), {
+      y: 40, autoAlpha: 0, scale: 0.96, duration: 0.85, ease: 'power3.out', stagger: 0.09,
+      scrollTrigger: { trigger: grid, start: 'top 80%' }
     });
+  });
+
+  // 4. Pillars — stagger horizontal
+  gsap.utils.toArray('.pillars').forEach(grid => {
+    gsap.from(grid.querySelectorAll('.pillar'), {
+      y: 32, autoAlpha: 0, duration: 0.8, ease: 'power3.out', stagger: 0.11,
+      scrollTrigger: { trigger: grid, start: 'top 82%' }
+    });
+  });
+
+  // 5. Values list — stagger du bas
+  gsap.utils.toArray('.values-list li').forEach((li, i) => {
+    gsap.from(li, { x: 16, autoAlpha: 0, duration: 0.6, ease: 'power2.out',
+      scrollTrigger: { trigger: li, start: 'top 90%' }, delay: i * 0.06 });
+  });
+
+  // 6. Legal cards — stagger
+  gsap.utils.toArray('.legal-missions').forEach(grid => {
+    gsap.from(grid.querySelectorAll('.legal-card'), {
+      y: 24, autoAlpha: 0, duration: 0.75, ease: 'power2.out', stagger: 0.09,
+      scrollTrigger: { trigger: grid, start: 'top 84%' }
+    });
+  });
+
+  // 7. Tout le reste .reveal (leads, blocs texte, etc.)
+  gsap.utils.toArray('.reveal').forEach(el => {
+    if (el.classList.contains('eyebrow') || el.classList.contains('section-title') ||
+        el.classList.contains('team-card') || el.classList.contains('pillar') ||
+        el.classList.contains('legal-card')) return;
+    gsap.from(el, { y: 36, autoAlpha: 0, duration: 0.95, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 87%' } });
   });
 
   // DECK : animation scale désactivée (design uniforme)
