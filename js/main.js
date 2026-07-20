@@ -257,7 +257,7 @@ if (RM || !hasGSAP) {
     });
   });
 
-  // 5. Values list — stagger du bas
+  // 5. Values list — stagger
   gsap.utils.toArray(".values-list li").forEach((li, i) => {
     gsap.from(li, {
       x: 16,
@@ -300,10 +300,73 @@ if (RM || !hasGSAP) {
     });
   });
 
-  // DECK : animation scale désactivée (design uniforme)
+  // NVH Reveal — lettre par lettre, pilotée au scroll
+  const nvhTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".nvh-reveal",
+      start: "top top",
+      end: "bottom bottom",
+      scrub: 0.8,
+    },
+  });
+  const nvhDur = 0.24,
+    nvhGap = 0.05;
+  ["#nvhN", "#nvhV", "#nvhH"].forEach((id, i) => {
+    const s = i * (nvhDur + nvhGap);
+    nvhTl
+      .fromTo(
+        id,
+        { autoAlpha: 0, yPercent: 6 },
+        { autoAlpha: 1, yPercent: 0, ease: "power2.out" },
+        s,
+      )
+      .to(id, { autoAlpha: 0, yPercent: -6, ease: "power2.in" }, s + nvhDur);
+  });
 
-  // Refresh après chargement des fonts
+  // Word illumination — mist → blanc au scrub scroll
+  function wrapWords(el) {
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach((node) => {
+      const parts = node.textContent.split(/(\s+)/);
+      const frag = document.createDocumentFragment();
+      parts.forEach((w) => {
+        if (!w.trim()) {
+          frag.appendChild(document.createTextNode(w));
+        } else {
+          const sp = document.createElement("span");
+          sp.className = "wg";
+          sp.textContent = w;
+          frag.appendChild(sp);
+        }
+      });
+      node.parentNode.replaceChild(frag, node);
+    });
+    return el.querySelectorAll(".wg");
+  }
+  document.querySelectorAll(".illuminate").forEach((el) => {
+    const words = wrapWords(el);
+    gsap.fromTo(
+      words,
+      { color: "rgba(143,166,196,0.28)" },
+      {
+        color: "rgba(244,247,252,1)",
+        stagger: { each: 0.04, from: "start" },
+        ease: "none",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 78%",
+          end: "bottom 30%",
+          scrub: true,
+        },
+      },
+    );
+  });
+
+  // Refresh après fonts + images (évite positions mal calculées)
   if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(() => ScrollTrigger.refresh());
   }
+  window.addEventListener("load", () => ScrollTrigger.refresh());
 }
