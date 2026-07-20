@@ -300,6 +300,29 @@ if (RM || !hasGSAP) {
     });
   });
 
+  // 5. Values list — stagger du bas
+  gsap.utils.toArray('.values-list li').forEach((li, i) => {
+    gsap.from(li, { x: 16, autoAlpha: 0, duration: 0.6, ease: 'power2.out',
+      scrollTrigger: { trigger: li, start: 'top 90%' }, delay: i * 0.06 });
+  });
+
+  // 6. Legal cards — stagger
+  gsap.utils.toArray('.legal-missions').forEach(grid => {
+    gsap.from(grid.querySelectorAll('.legal-card'), {
+      y: 24, autoAlpha: 0, duration: 0.75, ease: 'power2.out', stagger: 0.09,
+      scrollTrigger: { trigger: grid, start: 'top 84%' }
+    });
+  });
+
+  // 7. Tout le reste .reveal (leads, blocs texte, etc.)
+  gsap.utils.toArray('.reveal').forEach(el => {
+    if (el.classList.contains('eyebrow') || el.classList.contains('section-title') ||
+        el.classList.contains('team-card') || el.classList.contains('pillar') ||
+        el.classList.contains('legal-card')) return;
+    gsap.from(el, { y: 36, autoAlpha: 0, duration: 0.95, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 87%' } });
+  });
+
   // DECK : animation scale désactivée (design uniforme)
 
   // Refresh après chargement des fonts
