@@ -20,7 +20,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   text-wrap: balance;
 }
 html {
@@ -1095,7 +1097,10 @@ body.static .dive {
     rgba(233, 208, 138, 0.55),
     transparent
   );
-  transition: left 0.5s var(--ease), right 0.5s var(--ease), opacity 0.4s;
+  transition:
+    left 0.5s var(--ease),
+    right 0.5s var(--ease),
+    opacity 0.4s;
   opacity: 0.7;
 }
 .deck-card:hover::before {
@@ -1408,7 +1413,9 @@ body.static .dive {
   outline: none;
   border-color: rgba(198, 162, 75, 0.7);
   background: rgba(11, 42, 78, 0.58);
-  box-shadow: 0 0 0 3px rgba(198, 162, 75, 0.08), inset 0 1px 0 rgba(198, 162, 75, 0.06);
+  box-shadow:
+    0 0 0 3px rgba(198, 162, 75, 0.08),
+    inset 0 1px 0 rgba(198, 162, 75, 0.06);
 }
 .field.error input,
 .field.error textarea {
@@ -1423,6 +1430,13 @@ body.static .dive {
 }
 .field.error .err {
   display: block;
+}
+.field-error {
+  margin-top: 8px;
+  font-size: 0.78rem;
+  color: #e09a9a;
+  letter-spacing: 0.02em;
+  min-height: 1em;
 }
 .field textarea {
   min-height: 160px;
@@ -1460,15 +1474,20 @@ body.static .dive {
   font-size: 0.82rem;
 }
 .submit-btn {
-  align-self: flex-start;
-  display: inline-flex;
+  align-self: flex;
+  /* display: inline-flex; */
   align-items: center;
   gap: 12px;
   padding: 18px 42px;
   border-radius: 99px;
   border: none;
   cursor: pointer;
-  background: linear-gradient(105deg, var(--gold) 0%, var(--gold-hi) 50%, var(--gold) 100%);
+  background: linear-gradient(
+    105deg,
+    var(--gold) 0%,
+    var(--gold-hi) 50%,
+    var(--gold) 100%
+  );
   background-size: 200% 100%;
   background-position: 100% 0;
   color: var(--ink);
@@ -1497,6 +1516,131 @@ body.static .dive {
   color: var(--mist);
   opacity: 0.8;
   letter-spacing: 0.02em;
+}
+.form-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 64px 32px;
+  text-align: center;
+  border: 1px solid rgba(198, 162, 75, 0.25);
+  border-radius: 16px;
+  background: rgba(198, 162, 75, 0.04);
+  animation: successFade 0.6s var(--ease) both;
+}
+@keyframes successFade {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+.form-success svg {
+  width: 44px;
+  height: 44px;
+  stroke: var(--gold);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.form-success-title {
+  font-family: "Archivo";
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: 0.01em;
+  color: var(--white);
+}
+.form-success-sub {
+  font-family: "Inter";
+  font-weight: 300;
+  font-size: 0.95rem;
+  color: var(--mist);
+  line-height: 1.7;
+}
+
+/* ================= MODALE SUCCÈS ================= */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: rgba(3, 11, 22, 0.82);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: modalFadeIn 0.3s var(--ease) both;
+}
+.modal-backdrop[hidden] {
+  display: none;
+}
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.modal-box {
+  position: relative;
+  background: rgba(11, 42, 78, 0.7);
+  border: 1px solid rgba(198, 162, 75, 0.3);
+  border-radius: 20px;
+  padding: 56px 48px;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  animation: modalSlideUp 0.35s var(--ease) both;
+}
+@keyframes modalSlideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: 1px solid rgba(143, 166, 196, 0.25);
+  border-radius: 50%;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: border-color 0.25s;
+}
+.modal-close:hover { border-color: var(--gold); }
+.modal-close svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--mist);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.modal-check {
+  width: 52px;
+  height: 52px;
+  stroke: var(--gold);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.modal-title {
+  font-family: "Archivo";
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--white);
+}
+.modal-sub {
+  font-family: "Inter";
+  font-weight: 300;
+  font-size: 0.95rem;
+  color: var(--mist);
+  line-height: 1.7;
 }
 
 /* ================= FOOTER ================= */
