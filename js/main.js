@@ -81,23 +81,6 @@ form.addEventListener('submit', e => {
     : '';
 });
 
-// Boutons magnétiques (souris précise uniquement)
-if (window.matchMedia('(hover:hover) and (pointer:fine)').matches && !RM) {
-  document.querySelectorAll('[data-magnet]').forEach(el => {
-    const strength = 14;
-    el.addEventListener('mousemove', e => {
-      const r = el.getBoundingClientRect();
-      const x = (e.clientX - r.left - r.width / 2) / (r.width / 2);
-      const y = (e.clientY - r.top - r.height / 2) / (r.height / 2);
-      el.style.transform = `translate(${x * strength}px, ${y * strength}px)`;
-    });
-    el.addEventListener('mouseleave', () => {
-      el.style.transition = 'transform .5s cubic-bezier(.22,.8,.3,1)';
-      el.style.transform = '';
-      setTimeout(() => (el.style.transition = ''), 500);
-    });
-  });
-}
 
 /* ================= Fallback statique ================= */
 if (RM || !hasGSAP) {
@@ -136,20 +119,24 @@ if (RM || !hasGSAP) {
   });
 
   // Entrée
-  gsap.from('#logoHero', { autoAlpha: 0, scale: 1.06, duration: 1.8, ease: 'power3.out', delay: .15 });
-  gsap.from('#scrollHint', { autoAlpha: 0, y: 10, duration: 1, delay: 1.2 });
-  gsap.from('.burger', { autoAlpha: 0, y: -10, duration: .8, delay: .5 });
+  gsap.fromTo('#hero-stage',
+    { autoAlpha: 0, scale: 0.12, filter: 'blur(22px)' },
+    { autoAlpha: 1, scale: 1, filter: 'blur(0px)', duration: 1.6, ease: 'expo.out',
+      onComplete: () => gsap.set('#hero-stage', { clearProps: 'filter' }) }
+  );
+  gsap.from('#scrollHint', { autoAlpha: 0, y: 10, duration: 0.8, delay: 0.7 });
+  gsap.from('.burger', { autoAlpha: 0, y: -10, duration: 0.6, delay: 0.3 });
 
   // PLONGÉE
   gsap.timeline({
     scrollTrigger: {
-      trigger: '.dive', start: 'top top', end: 'bottom bottom', scrub: 1,
+      trigger: '.dive', start: 'top top', end: 'bottom bottom', scrub: 0.3,
       onUpdate: self => body.classList.toggle('past-dive', self.progress > .6)
     }
   })
-    .to('#logoHero', { scale: 16, ease: 'power2.in' }, 0)
+    .fromTo('#logoHero', { scale: 1 }, { scale: 16, ease: 'power2.in', immediateRender: false }, 0)
     .to('#scrollHint', { autoAlpha: 0, ease: 'none' }, 0)
-    .to('#logoHero', { autoAlpha: 0, ease: 'none', duration: .3 }, .5)
+    .fromTo('#logoHero', { autoAlpha: 1 }, { autoAlpha: 0, ease: 'none', duration: .3, immediateRender: false }, .5)
     .to('#diveVeil', { opacity: .95, ease: 'none', duration: .4 }, .55);
 
   // Parallax des fonds de section
@@ -168,17 +155,7 @@ if (RM || !hasGSAP) {
     });
   });
 
-  // DECK : la carte qui part recule et s'assombrit
-  const cards = gsap.utils.toArray('.deck-card');
-  cards.forEach((card, i) => {
-    if (i === cards.length - 1) return;
-    const next = cards[i + 1];
-    gsap.timeline({
-      scrollTrigger: { trigger: next, start: 'top bottom', end: 'top top+=140', scrub: true }
-    })
-      .to(card, { scale: .93, transformOrigin: 'center top', ease: 'none' }, 0)
-      .to(card.querySelector('.card-veil'), { opacity: .55, ease: 'none' }, 0);
-  });
+  // DECK : animation scale désactivée (design uniforme)
 
   // Refresh après chargement des fonts
   if (document.fonts && document.fonts.ready) {
