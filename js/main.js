@@ -144,13 +144,17 @@ if (RM || !hasGSAP) {
   gsap.registerPlugin(ScrollTrigger);
 
   // Lenis : inertie de scroll synchronisée avec ScrollTrigger
+  // Désactivé sur touch (mobile/tablette) — le scroll natif + ScrollTrigger.normalizeScroll est plus fiable
+  const isTouch = window.matchMedia("(pointer: coarse)").matches;
   let lenis = null;
-  if (typeof Lenis !== "undefined") {
+  if (typeof Lenis !== "undefined" && !isTouch) {
     document.documentElement.classList.add("lenis");
     lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
     lenis.on("scroll", ScrollTrigger.update);
     gsap.ticker.add((t) => lenis.raf(t * 1000));
     gsap.ticker.lagSmoothing(0);
+  } else {
+    ScrollTrigger.normalizeScroll(true);
   }
 
   // Ancres via Lenis

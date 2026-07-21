@@ -1474,8 +1474,6 @@ body.static .dive {
   font-size: 0.82rem;
 }
 .submit-btn {
-  align-self: flex;
-  /* display: inline-flex; */
   align-items: center;
   gap: 12px;
   padding: 18px 42px;
@@ -1531,8 +1529,14 @@ body.static .dive {
   animation: successFade 0.6s var(--ease) both;
 }
 @keyframes successFade {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 .form-success svg {
   width: 44px;
@@ -1575,8 +1579,12 @@ body.static .dive {
   display: none;
 }
 @keyframes modalFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 .modal-box {
   position: relative;
@@ -1594,8 +1602,14 @@ body.static .dive {
   animation: modalSlideUp 0.35s var(--ease) both;
 }
 @keyframes modalSlideUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 .modal-close {
   position: absolute;
@@ -1611,7 +1625,9 @@ body.static .dive {
   place-items: center;
   transition: border-color 0.25s;
 }
-.modal-close:hover { border-color: var(--gold); }
+.modal-close:hover {
+  border-color: var(--gold);
+}
 .modal-close svg {
   width: 14px;
   height: 14px;
@@ -1737,5 +1753,102 @@ body.static .dive {
   .lead-card {
     grid-column: auto;
     grid-row: auto;
+  }
+
+  /* Spacing */
+  .band {
+    padding: 72px 0;
+  }
+  .about-grid {
+    gap: 30px;
+  }
+
+  /* Typography adjustments */
+  .section-title {
+    margin-top: 16px;
+  }
+  .lead {
+    margin-top: 20px;
+  }
+
+  /* About / Legal pull quotes */
+  .about-pull {
+    padding-left: 18px;
+  }
+  .legal-vision {
+    padding-left: 18px;
+    margin-top: 48px;
+  }
+
+  /* Pillars */
+  .pillar {
+    padding: 26px 20px;
+  }
+
+  /* Deck cards — reduce sticky offset gap on small screens */
+  .deck-card:nth-child(2) {
+    top: calc(var(--header-h) + 10px);
+  }
+  .deck-card:nth-child(3) {
+    top: calc(var(--header-h) + 20px);
+  }
+  .deck-card:nth-child(4) {
+    top: calc(var(--header-h) + 30px);
+  }
+  .deck-card {
+    margin-bottom: 5vh;
+  }
+
+  /* Brand ticker */
+  .ticker-item {
+    padding: 0 40px;
+  }
+  .ticker-item img {
+    height: 38px;
+  }
+
+  /* Submit button — full width on mobile */
+  .submit-btn {
+    width: 100%;
+    justify-content: center;
+    align-self: stretch;
+  }
+
+  /* Modal — less padding on small screens */
+  .modal-box {
+    padding: 40px 24px;
+  }
+
+  /* Footer — stack on very narrow screens */
+  .site-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 32px 5vw;
+  }
+  .site-footer nav {
+    flex-wrap: wrap;
+    gap: 14px 20px;
+  }
+}
+
+@media (max-width: 380px) {
+  .band {
+    padding: 56px 0;
+  }
+  .band .inner {
+    padding: 0 5vw;
+  }
+  .about-pull {
+    font-size: clamp(1.2rem, 6vw, 1.4rem);
+  }
+  .menu-overlay {
+    padding: 88px 7vw 32px;
+  }
+  .modal-box {
+    padding: 36px 18px;
+  }
+  .ticker-item {
+    padding: 0 28px;
   }
 }
