@@ -2,7 +2,10 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
     <title>N.V.H Management — Agence de footballeurs professionnels</title>
     <meta
       name="description"
@@ -29,6 +32,8 @@
     <div class="progress" aria-hidden="true"></div>
     <div class="glow glow-blue" aria-hidden="true"></div>
     <div class="grain" aria-hidden="true"></div>
+
+    <a class="skip-link" href="#main-content">Aller au contenu</a>
 
     <!-- Header -->
     <header class="site-header" id="siteHeader">
@@ -121,11 +126,22 @@
       </div>
     </nav>
 
-    <main>
+    <main id="main-content">
       <!-- ============ ACCUEIL : PLONGÉE, logo seul ============ -->
       <div class="dive" id="accueil">
         <div class="dive-sticky">
           <div class="pitch-bg" aria-hidden="true">
+            <video
+              class="hero-video"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="auto"
+            >
+              <source src="./assets/video/stadium.mp4" type="video/mp4" />
+            </video>
+            <!-- ancien terrain SVG (commenté — remplacé par vidéo)
             <div class="pitch-tilt">
               <svg
                 class="pitch-spin"
@@ -153,6 +169,7 @@
                 <path d="M 660 1010 A 20 20 0 0 0 640 1030" />
               </svg>
             </div>
+            -->
           </div>
           <div id="hero-stage">
             <div class="logo-hero" id="logoHero">
@@ -317,7 +334,7 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
       <section class="band" id="qui-sommes-nous">
         <div class="section-veil" aria-hidden="true">
           <img
-            src="https://images.unsplash.com/photo-1706675780107-7c43cc487928?auto=format&fit=crop&w=1920&q=80"
+            src="./assets/img/sections/qui-sommes-nous.jpg"
             alt=""
             loading="lazy"
             onerror="this.style.display = 'none'"
@@ -358,6 +375,14 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
 
       <!-- ============ NOTRE ÉQUIPE ============ -->
       <section class="band" id="notre-equipe">
+        <div class="section-veil" aria-hidden="true">
+          <img
+            src="./assets/img/sections/notre-equipe.jpg"
+            alt=""
+            loading="lazy"
+            onerror="this.style.display = 'none'"
+          />
+        </div>
         <div class="inner">
           <p class="eyebrow reveal">Notre équipe</p>
           <h2 class="section-title reveal">
@@ -424,6 +449,30 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
                 </div>
               </figure>
             </article>
+            <article class="team-card reveal">
+              <figure>
+                <img
+                  src="./assets/img/team/lucien.jpg"
+                  alt="Portrait de Lucien"
+                />
+                <div class="tc-body">
+                  <h3>Lucien</h3>
+                  <p>Ostéopathe</p>
+                </div>
+              </figure>
+            </article>
+            <article class="team-card reveal">
+              <figure>
+                <img
+                  src="./assets/img/team/domba.jpg"
+                  alt="Portrait de Domba Abdoul Aziz"
+                />
+                <div class="tc-body">
+                  <h3>Domba Abdoul Aziz</h3>
+                  <p>Représentant international NVH MANAGEMENT<br>Organisateur sportif et de conformité réglementaire</p>
+                </div>
+              </figure>
+            </article>
           </div>
         </div>
       </section>
@@ -432,7 +481,7 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
       <section class="band" id="notre-mission">
         <div class="section-veil" aria-hidden="true">
           <img
-            src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1920&q=80"
+            src="./assets/img/sections/notre-mission.jpg"
             alt=""
             loading="lazy"
             onerror="this.style.display = 'none'"
@@ -489,7 +538,11 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
 
       <!-- ============ SERVICES GOLD ============ -->
       <section class="band gold-section" id="services-gold">
-        <div class="section-veil" aria-hidden="true"></div>
+        <div class="section-veil" aria-hidden="true">
+          <video class="gold-video" autoplay muted loop playsinline>
+            <source src="./assets/video/gold.mp4" type="video/mp4" />
+          </video>
+        </div>
         <div class="inner">
           <p class="eyebrow gold reveal">Services Gold</p>
           <h2 class="section-title gold-title reveal">
@@ -503,12 +556,14 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
 
           <div class="pillars">
             <article class="pillar reveal">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M19.5 12.6 12 20l-7.5-7.4A5 5 0 1 1 12 6.3a5 5 0 1 1 7.5 6.3Z"
+              <div class="pillar-img">
+                <img
+                  src="./assets/img/pillars/qualite-vie.jpg"
+                  alt=""
+                  loading="lazy"
+                  onerror="this.closest('.pillar-img').style.display = 'none'"
                 />
-                <path d="M3.5 12h4l1.5-3 2.5 6 2-4 1 1h6" />
-              </svg>
+              </div>
               <h3>Qualité de vie</h3>
               <ul>
                 <li>Diététicien nutritionniste</li>
@@ -518,12 +573,14 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
               </ul>
             </article>
             <article class="pillar reveal">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="12" cy="13" r="8" />
-                <path d="M12 9v4l2.5 2.5" />
-                <path d="M9 2h6" />
-                <path d="m19 5 1.5 1.5" />
-              </svg>
+              <div class="pillar-img">
+                <img
+                  src="./assets/img/pillars/performances.jpg"
+                  alt=""
+                  loading="lazy"
+                  onerror="this.closest('.pillar-img').style.display = 'none'"
+                />
+              </div>
               <h3>Performances</h3>
               <ul>
                 <li>Analyse vidéo</li>
@@ -536,12 +593,14 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
               </ul>
             </article>
             <article class="pillar reveal">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M12 2 4.5 5v6c0 5 3.2 8.7 7.5 11 4.3-2.3 7.5-6 7.5-11V5L12 2Z"
+              <div class="pillar-img">
+                <img
+                  src="./assets/img/pillars/protections.png"
+                  alt=""
+                  loading="lazy"
+                  onerror="this.closest('.pillar-img').style.display = 'none'"
                 />
-                <path d="m8.8 12 2.2 2.2 4.2-4.4" />
-              </svg>
+              </div>
               <h3>Protections</h3>
               <ul>
                 <li>Conseil juridique</li>
@@ -555,111 +614,156 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
           <!-- Deck sticky : chaque service recouvre le précédent -->
           <div class="deck">
             <article class="deck-card" id="gestion-carriere">
-              <div class="deck-title">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6Z"
-                  />
-                  <path d="M14 3v6h6" />
-                  <path
-                    d="m10.5 17 5.5-5.5a1.4 1.4 0 0 0-2-2L8.5 15l-.5 2.5 2.5-.5Z"
-                  />
-                </svg>
-                <h3>Gestion de carrière</h3>
+              <div class="deck-card-img">
+                <img
+                  src="./assets/img/deck/gestion-carriere.jpg"
+                  alt=""
+                  loading="lazy"
+                  onerror="
+                    this.closest('.deck-card-img').style.display = 'none'
+                  "
+                />
               </div>
-              <p>
-                Notre mission est de mettre en avant l'intérêt de nos joueurs.
-                Pour cela nous
-                <strong>conseillons, accompagnons, négocions</strong>, tout en
-                incluant la famille ou l'entourage afin de prendre les bonnes
-                décisions ensemble pour la longévité de la carrière
-                professionnelle.
-              </p>
-              <div class="card-veil" aria-hidden="true"></div>
+              <div class="deck-card-body">
+                <div class="deck-title">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6Z"
+                    />
+                    <path d="M14 3v6h6" />
+                    <path
+                      d="m10.5 17 5.5-5.5a1.4 1.4 0 0 0-2-2L8.5 15l-.5 2.5 2.5-.5Z"
+                    />
+                  </svg>
+                  <h3>Gestion de carrière</h3>
+                </div>
+                <p>
+                  Notre mission est de mettre en avant l'intérêt de nos joueurs.
+                  Pour cela nous
+                  <strong>conseillons, accompagnons, négocions</strong>, tout en
+                  incluant la famille ou l'entourage afin de prendre les bonnes
+                  décisions ensemble pour la longévité de la carrière
+                  professionnelle.
+                </p>
+              </div>
             </article>
             <article class="deck-card" id="conciergerie">
-              <div class="deck-title">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M4 18h16" />
-                  <path d="M5 18a7 7 0 0 1 14 0" />
-                  <path d="M12 11V8" />
-                  <path d="M10.5 8h3" />
-                  <path d="M2.5 21h19" />
-                </svg>
-                <h3>Conciergerie</h3>
+              <div class="deck-card-img">
+                <img
+                  src="./assets/img/deck/conciergerie.jpg"
+                  alt=""
+                  loading="lazy"
+                  onerror="
+                    this.closest('.deck-card-img').style.display = 'none'
+                  "
+                />
               </div>
-              <p>
-                N.V.H Management dispose de la
-                <strong>conciergerie 360°</strong> afin de faciliter la vie de
-                nos joueurs ainsi que celle de leurs familles. Un service dédié
-                pour les besoins quotidiens&nbsp;: organisation de voyage,
-                trouver une école aux enfants, un restaurant, location ou achat
-                de voiture, billets d'avion, service pressing, décorateur,
-                bijoutier, déménageur, privatisation d'un lieu.
-              </p>
-              <p>
-                Nous faisons en sorte que chaque résultat soit unique, afin que
-                nos joueurs se concentrent sur leur carrière de sportif de haut
-                niveau.
-              </p>
-              <div class="card-veil" aria-hidden="true"></div>
+              <div class="deck-card-body">
+                <div class="deck-title">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 18h16" />
+                    <path d="M5 18a7 7 0 0 1 14 0" />
+                    <path d="M12 11V8" />
+                    <path d="M10.5 8h3" />
+                    <path d="M2.5 21h19" />
+                  </svg>
+                  <h3>Conciergerie</h3>
+                </div>
+                <p>
+                  N.V.H Management dispose de la
+                  <strong>conciergerie 360°</strong> afin de faciliter la vie de
+                  nos joueurs ainsi que celle de leurs familles. Un service
+                  dédié pour les besoins quotidiens&nbsp;: organisation de
+                  voyage, trouver une école aux enfants, un restaurant, location
+                  ou achat de voiture, billets d'avion, service pressing,
+                  décorateur, bijoutier, déménageur, privatisation d'un lieu.
+                </p>
+                <p>
+                  Nous faisons en sorte que chaque résultat soit unique, afin
+                  que nos joueurs se concentrent sur leur carrière de sportif de
+                  haut niveau.
+                </p>
+              </div>
             </article>
             <article class="deck-card" id="data">
-              <div class="deck-title">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M3 3v18h18" />
-                  <path d="m6.5 15 4-5 3.5 3 4.5-6.5" />
-                  <circle cx="10.5" cy="10" r="1" fill="currentColor" />
-                  <circle cx="14" cy="13" r="1" fill="currentColor" />
-                </svg>
-                <h3>Data</h3>
+              <div class="deck-card-img">
+                <img
+                  src="./assets/img/deck/data.jpg"
+                  alt=""
+                  loading="lazy"
+                  onerror="
+                    this.closest('.deck-card-img').style.display = 'none'
+                  "
+                />
               </div>
-              <p>
-                Afin d'être plus performant sur le terrain, nous mettons en
-                place un service spécialement dédié à la progression des
-                performances&nbsp;:
-                <strong
-                  >logiciels de données GPS, analyses vidéos des matchs,
-                  préparation physique spécifique</strong
-                >.
-              </p>
-              <p>
-                Un montage vidéo est présenté à chaque joueur afin qu'il prenne
-                note pour maximiser sa chance de réussite au plus haut niveau.
-              </p>
-              <div class="tags">
-                <span class="tag">Données GPS</span
-                ><span class="tag">Analyse vidéo</span
-                ><span class="tag">Préparation physique</span>
+              <div class="deck-card-body">
+                <div class="deck-title">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M3 3v18h18" />
+                    <path d="m6.5 15 4-5 3.5 3 4.5-6.5" />
+                    <circle cx="10.5" cy="10" r="1" fill="currentColor" />
+                    <circle cx="14" cy="13" r="1" fill="currentColor" />
+                  </svg>
+                  <h3>Data</h3>
+                </div>
+                <p>
+                  Afin d'être plus performant sur le terrain, nous mettons en
+                  place un service spécialement dédié à la progression des
+                  performances&nbsp;:
+                  <strong
+                    >logiciels de données GPS, analyses vidéos des matchs,
+                    préparation physique spécifique</strong
+                  >.
+                </p>
+                <p>
+                  Un montage vidéo est présenté à chaque joueur afin qu'il
+                  prenne note pour maximiser sa chance de réussite au plus haut
+                  niveau.
+                </p>
+                <div class="tags">
+                  <span class="tag">Données GPS</span
+                  ><span class="tag">Analyse vidéo</span
+                  ><span class="tag">Préparation physique</span>
+                </div>
               </div>
-              <div class="card-veil" aria-hidden="true"></div>
             </article>
             <article class="deck-card" id="marketing-digital">
-              <div class="deck-title">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="m3 11 14-6v14L3 13v-2Z" />
-                  <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
-                  <path d="M20.5 8.5 22 7" />
-                  <path d="M20.5 13.5 22 15" />
-                  <path d="M21 11h2" />
-                </svg>
-                <h3>Marketing digital</h3>
+              <div class="deck-card-img">
+                <img
+                  src="./assets/img/deck/marketing.jpg"
+                  alt=""
+                  loading="lazy"
+                  onerror="
+                    this.closest('.deck-card-img').style.display = 'none'
+                  "
+                />
               </div>
-              <p>
-                Nous proposons un accompagnement à nos joueurs sur l'aspect
-                <strong
-                  >conseil en image, communication marketing et digital, attaché
-                  de presse</strong
-                >, et la mise en place de stratégies d'influence sur les réseaux
-                (Instagram, Snapchat, Facebook, Twitter, LinkedIn).
-              </p>
-              <p>
-                Nous faisons en sorte que l'image et la communication soient
-                valorisées afin que nos joueurs puissent accroître davantage
-                leur notoriété, car une image positive est toujours synonyme de
-                réussite.
-              </p>
-              <div class="card-veil" aria-hidden="true"></div>
+              <div class="deck-card-body">
+                <div class="deck-title">
+                  <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m3 11 14-6v14L3 13v-2Z" />
+                    <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+                    <path d="M20.5 8.5 22 7" />
+                    <path d="M20.5 13.5 22 15" />
+                    <path d="M21 11h2" />
+                  </svg>
+                  <h3>Marketing digital</h3>
+                </div>
+                <p>
+                  Nous proposons un accompagnement à nos joueurs sur l'aspect
+                  <strong
+                    >conseil en image, communication marketing et digital,
+                    attaché de presse</strong
+                  >, et la mise en place de stratégies d'influence sur les
+                  réseaux (Instagram, Snapchat, Facebook, Twitter, LinkedIn).
+                </p>
+                <p>
+                  Nous faisons en sorte que l'image et la communication soient
+                  valorisées afin que nos joueurs puissent accroître davantage
+                  leur notoriété, car une image positive est toujours synonyme
+                  de réussite.
+                </p>
+              </div>
             </article>
           </div>
         </div>
@@ -667,6 +771,14 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
 
       <!-- ============ SPONSORING ============ -->
       <section class="band" id="sponsoring">
+        <div class="section-veil" aria-hidden="true">
+          <img
+            src="./assets/img/sections/sponsoring.jpg"
+            alt=""
+            loading="lazy"
+            onerror="this.style.display = 'none'"
+          />
+        </div>
         <div class="inner">
           <p class="eyebrow reveal">Sponsoring</p>
           <h2 class="section-title reveal">
@@ -760,7 +872,7 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
       <section class="band" id="protection-juridique">
         <div class="section-veil" aria-hidden="true">
           <img
-            src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1920&q=80"
+            src="./assets/img/sections/juridique.jpg"
             alt=""
             loading="lazy"
             onerror="this.style.display = 'none'"
@@ -793,14 +905,16 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
 
           <div class="legal-missions">
             <article class="legal-card reveal">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6Z"
+              <div class="legal-card-img">
+                <img
+                  src="./assets/img/legal/contractuel.jpg"
+                  alt=""
+                  loading="lazy"
+                  onerror="
+                    this.closest('.legal-card-img').style.display = 'none'
+                  "
                 />
-                <path d="M14 3v6h6" />
-                <path d="M8 13h8" />
-                <path d="M8 17h5" />
-              </svg>
+              </div>
               <h3>Accompagnement contractuel</h3>
               <p>
                 Analyse, explication et accompagnement sur les contrats sportifs
@@ -809,12 +923,16 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
               </p>
             </article>
             <article class="legal-card reveal">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M12 2 4.5 5v6c0 5 3.2 8.7 7.5 11 4.3-2.3 7.5-6 7.5-11V5L12 2Z"
+              <div class="legal-card-img">
+                <img
+                  src="./assets/img/legal/interets.jpg"
+                  alt=""
+                  loading="lazy"
+                  onerror="
+                    this.closest('.legal-card-img').style.display = 'none'
+                  "
                 />
-                <path d="m8.8 12 2.2 2.2 4.2-4.4" />
-              </svg>
+              </div>
               <h3>Protection des intérêts du joueur</h3>
               <p>
                 Veille au respect des droits du joueur dans ses relations avec
@@ -822,12 +940,16 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
               </p>
             </article>
             <article class="legal-card reveal">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="9" cy="8" r="3.2" />
-                <path d="M3.5 20a5.5 5.5 0 0 1 11 0" />
-                <circle cx="16.8" cy="9.5" r="2.6" />
-                <path d="M15.5 15.2a4.6 4.6 0 0 1 6 4.3" />
-              </svg>
+              <div class="legal-card-img">
+                <img
+                  src="./assets/img/legal/famille.jpg"
+                  alt=""
+                  loading="lazy"
+                  onerror="
+                    this.closest('.legal-card-img').style.display = 'none'
+                  "
+                />
+              </div>
               <h3>Accompagnement des familles</h3>
               <p>
                 Parce qu'un jeune joueur n'avance jamais seul, nous aidons les
@@ -836,11 +958,16 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
               </p>
             </article>
             <article class="legal-card reveal">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="12" cy="12" r="9" />
-                <path d="M3 12h18" />
-                <path d="M12 3a14.5 14.5 0 0 1 0 18 14.5 14.5 0 0 1 0-18Z" />
-              </svg>
+              <div class="legal-card-img">
+                <img
+                  src="./assets/img/legal/international.jpg"
+                  alt=""
+                  loading="lazy"
+                  onerror="
+                    this.closest('.legal-card-img').style.display = 'none'
+                  "
+                />
+              </div>
               <h3>Démarches nationales et internationales</h3>
               <p>
                 Accompagnement dans certaines procédures administratives liées
@@ -850,11 +977,16 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
               </p>
             </article>
             <article class="legal-card reveal">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 3 2.5 20h19L12 3Z" />
-                <path d="M12 10v4" />
-                <circle cx="12" cy="17" r=".8" fill="currentColor" />
-              </svg>
+              <div class="legal-card-img">
+                <img
+                  src="./assets/img/legal/prevention.jpg"
+                  alt=""
+                  loading="lazy"
+                  onerror="
+                    this.closest('.legal-card-img').style.display = 'none'
+                  "
+                />
+              </div>
               <h3>Prévention et conseil</h3>
               <p>
                 Sensibilisation aux risques&nbsp;: engagements précipités,
@@ -863,12 +995,16 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
               </p>
             </article>
             <article class="legal-card reveal">
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M12 6c-2-1.5-4.5-2-8-2v14c3.5 0 6 .5 8 2 2-1.5 4.5-2 8-2V4c-3.5 0-6 .5-8 2Z"
+              <div class="legal-card-img">
+                <img
+                  src="./assets/img/legal/transmission.jpg"
+                  alt=""
+                  loading="lazy"
+                  onerror="
+                    this.closest('.legal-card-img').style.display = 'none'
+                  "
                 />
-                <path d="M12 6v14" />
-              </svg>
+              </div>
               <h3>Transmission et pédagogie</h3>
               <p>
                 Nous prenons le temps d'expliquer les droits, les obligations et
@@ -957,6 +1093,7 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
                   name="email"
                   type="email"
                   placeholder="votre@email.com"
+                  autocomplete="email"
                   required
                 />
                 <p class="err">Entrez une adresse email valide.</p>
@@ -992,14 +1129,30 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
                   </svg>
                   <div>Glissez un fichier ici ou cliquez pour parcourir</div>
                   <div class="file-name" id="fileName"></div>
-                  <input id="f-file" name="fichier" type="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.png,.jpg,.jpeg,.gif,.webp,.mp4,.mov,.zip,.txt" hidden />
-                  <p id="fileError" class="field-error" role="alert" aria-live="polite"></p>
+                  <input
+                    id="f-file"
+                    name="fichier"
+                    type="file"
+                    accept=".pdf,.doc,.docx,.xls,.xlsx,.png,.jpg,.jpeg,.gif,.webp,.mp4,.mov,.zip,.txt"
+                    hidden
+                  />
+                  <p
+                    id="fileError"
+                    class="field-error"
+                    role="alert"
+                    aria-live="polite"
+                  ></p>
                 </div>
               </div>
               <button class="submit-btn" type="submit" data-magnet>
                 Envoyer
               </button>
-              <p class="form-note" id="formNote"></p>
+              <p
+                class="form-note"
+                id="formNote"
+                aria-live="polite"
+                aria-atomic="true"
+              ></p>
             </form>
           </div>
         </div>
@@ -1007,14 +1160,28 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
     </main>
 
     <!-- Modale succès formulaire -->
-    <div class="modal-backdrop" id="successModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div
+      class="modal-backdrop"
+      id="successModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+      aria-describedby="modalSub"
+      hidden
+    >
       <div class="modal-box">
         <button class="modal-close" id="modalClose" aria-label="Fermer">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18 6 6 18M6 6l12 12" />
+          </svg>
         </button>
-        <svg class="modal-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
+        <svg class="modal-check" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 13l4 4L19 7" />
+        </svg>
         <p class="modal-title" id="modalTitle">Message envoyé.</p>
-        <p class="modal-sub">Nous reviendrons vers vous rapidement.</p>
+        <p class="modal-sub" id="modalSub">
+          Nous reviendrons vers vous rapidement.
+        </p>
       </div>
     </div>
 

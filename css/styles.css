@@ -3,9 +3,9 @@
    Palette : navy profond / blanc / or (réservé à Services Gold)
    ============================================================ */
 :root {
-  --ink: #030b16;
-  --navy: #0a2342;
-  --panel: #0b2a4e;
+  --ink: #173660;
+  --navy: #1a3d6e;
+  --panel: #1e4278;
   --white: #f4f7fc;
   --mist: #8fa6c4;
   --mist-dim: rgba(143, 166, 196, 0.14);
@@ -24,6 +24,9 @@ h1,
 h2,
 h3 {
   text-wrap: balance;
+}
+p {
+  text-wrap: pretty;
 }
 html {
   scroll-behavior: smooth;
@@ -47,6 +50,22 @@ body {
   outline: 2px solid var(--gold);
   outline-offset: 3px;
   border-radius: 4px;
+}
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 9999;
+  padding: 10px 18px;
+  background: var(--gold);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 0.85rem;
+  border-radius: 0 0 8px 8px;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
 }
 
 /* ================= AMBIANCE GLOBALE ================= */
@@ -118,12 +137,15 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 20px 28px;
+  padding-top: max(20px, calc(20px + env(safe-area-inset-top)));
+  padding-left: max(28px, calc(28px + env(safe-area-inset-left)));
+  padding-right: max(28px, calc(28px + env(safe-area-inset-right)));
   transition:
     background 0.4s,
     backdrop-filter 0.4s;
 }
 .site-header.scrolled {
-  background: rgba(3, 11, 22, 0.66);
+  background: rgba(23, 54, 96, 0.66);
   backdrop-filter: blur(16px) saturate(1.15);
 }
 .brand-mini {
@@ -163,7 +185,7 @@ body.static .brand-mini {
   height: 54px;
   border: 1px solid rgba(244, 247, 252, 0.22);
   border-radius: 50%;
-  background: rgba(3, 11, 22, 0.5);
+  background: rgba(23, 54, 96, 0.5);
   backdrop-filter: blur(8px);
   cursor: pointer;
   display: grid;
@@ -218,7 +240,7 @@ body.menu-open .burger span::after {
   position: fixed;
   inset: 0;
   z-index: 40;
-  background: rgba(3, 11, 22, 0.8);
+  background: rgba(23, 54, 96, 0.8);
   backdrop-filter: blur(28px) saturate(1.2);
   display: flex;
   flex-direction: column;
@@ -447,6 +469,19 @@ body.static .dive {
   display: block;
   filter: drop-shadow(0 0 80px rgba(198, 162, 75, 0.26));
 }
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.42;
+  transition: opacity 1.2s;
+  pointer-events: none;
+}
+.hero-video.loaded {
+  opacity: 0.42;
+}
 .dive-veil {
   position: absolute;
   inset: 0;
@@ -498,7 +533,7 @@ body.static .dive {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.28;
+  opacity: 0.52;
   filter: blur(2px);
   transform: scale(1.06);
   will-change: transform;
@@ -517,8 +552,8 @@ body.static .dive {
   background: linear-gradient(
     180deg,
     var(--ink) 0%,
-    rgba(3, 11, 22, 0.38) 22%,
-    rgba(3, 11, 22, 0.38) 78%,
+    rgba(23, 54, 96, 0.18) 22%,
+    rgba(23, 54, 96, 0.18) 78%,
     var(--ink) 100%
   );
 }
@@ -528,15 +563,15 @@ body.static .dive {
   background:
     radial-gradient(
       ellipse 78% 58% at 18% 36%,
-      rgba(10, 45, 92, 0.78) 0%,
+      rgba(14, 55, 108, 0.72) 0%,
       transparent 62%
     ),
     radial-gradient(
       ellipse 48% 64% at 88% 66%,
-      rgba(8, 30, 68, 0.52) 0%,
+      rgba(10, 38, 82, 0.48) 0%,
       transparent 62%
     ),
-    linear-gradient(155deg, #030b16 0%, #071e38 52%, #030b16 100%);
+    linear-gradient(155deg, #1a3d6e 0%, #173660 52%, #1a3d6e 100%);
 }
 #qui-sommes-nous .section-veil::before {
   background-image: repeating-linear-gradient(
@@ -558,10 +593,10 @@ body.static .dive {
     ),
     radial-gradient(
       ellipse 100% 38% at 50% 100%,
-      rgba(3, 11, 22, 1) 0%,
+      rgba(23, 54, 96, 1) 0%,
       transparent 80%
     ),
-    linear-gradient(180deg, #030b16 0%, #0a2342 45%, #030b16 100%);
+    linear-gradient(180deg, #1a3d6e 0%, #234f8a 45%, #1a3d6e 100%);
 }
 #notre-mission .section-veil::before {
   background-image:
@@ -582,24 +617,63 @@ body.static .dive {
 }
 
 /* --- Services Gold — lumière, prestige --- */
+/* --- Services Gold — photo stade, lumière dorée --- */
 #services-gold .section-veil {
+  background: var(--ink);
+}
+.gold-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.45;
+  filter: sepia(70%) hue-rotate(-14deg) saturate(1.8) brightness(0.82);
+  mix-blend-mode: luminosity;
+}
+@media (prefers-reduced-motion: reduce) {
+  .gold-video {
+    display: none;
+  }
+}
+#services-gold .section-veil::before {
   background:
-    radial-gradient(
-      ellipse 80% 60% at 50% 22%,
-      rgba(198, 162, 75, 0.2) 0%,
-      transparent 65%
+    conic-gradient(
+      from 268deg at 50% -8%,
+      transparent 0deg,
+      rgba(233, 208, 138, 0.22) 7deg,
+      rgba(198, 162, 75, 0.38) 13deg,
+      rgba(233, 208, 138, 0.22) 19deg,
+      transparent 26deg
     ),
     radial-gradient(
-      ellipse 50% 45% at 82% 72%,
-      rgba(198, 162, 75, 0.09) 0%,
-      transparent 60%
+      ellipse 85% 65% at 50% 28%,
+      rgba(198, 162, 75, 0.42) 0%,
+      rgba(198, 162, 75, 0.1) 50%,
+      transparent 72%
     ),
     radial-gradient(
-      ellipse 40% 40% at 12% 55%,
-      rgba(198, 162, 75, 0.06) 0%,
-      transparent 60%
+      ellipse 55% 48% at 82% 82%,
+      rgba(212, 150, 30, 0.22) 0%,
+      transparent 62%
     ),
-    linear-gradient(180deg, #030b16 0%, #0d1508 40%, #030b16 100%);
+    radial-gradient(
+      ellipse 44% 42% at 10% 72%,
+      rgba(233, 208, 138, 0.16) 0%,
+      transparent 62%
+    );
+}
+#services-gold .section-veil::after {
+  background: linear-gradient(
+    180deg,
+    var(--ink) 0%,
+    rgba(10, 18, 35, 0.45) 8%,
+    rgba(10, 18, 35, 0) 22%,
+    rgba(10, 18, 35, 0) 78%,
+    rgba(10, 18, 35, 0.45) 92%,
+    var(--ink) 100%
+  );
 }
 
 /* --- Protection juridique — autorité, structure --- */
@@ -620,7 +694,7 @@ body.static .dive {
       rgba(4, 16, 42, 0.4) 0%,
       transparent 60%
     ),
-    linear-gradient(175deg, #010912 0%, #0b2548 40%, #020c1e 100%);
+    linear-gradient(175deg, #1a3d6e 0%, #234f8a 40%, #173660 100%);
 }
 #protection-juridique .section-veil::before {
   background-image:
@@ -658,7 +732,7 @@ body.static .dive {
       rgba(12, 44, 86, 0.3) 0%,
       transparent 60%
     ),
-    linear-gradient(205deg, #030b16 0%, #0b2040 52%, #030b16 100%);
+    linear-gradient(205deg, #1a3d6e 0%, #173660 52%, #1a3d6e 100%);
 }
 #contact .section-veil::before {
   background-image: radial-gradient(
@@ -764,7 +838,7 @@ body.static .dive {
 
 /* ================= ÉQUIPE ================= */
 #notre-equipe {
-  background: #020912;
+  background: #173660;
 }
 #notre-equipe::before {
   content: "";
@@ -795,11 +869,20 @@ body.static .dive {
   margin-top: 64px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 375px;
+  grid-auto-rows: 300px;
   gap: 18px;
 }
+.team-card {
+  height: auto;
+}
 .lead-card {
-  grid-row: span 2;
+  grid-column: span 1;
+  grid-row: span 3;
+  height: auto;
+}
+.team-card.lead-card figure img {
+  object-fit: cover;
+  object-position: center top;
 }
 .team-card {
   position: relative;
@@ -816,7 +899,7 @@ body.static .dive {
 }
 .team-card figure {
   margin: 0;
-  width: 100%;
+  width: 105%;
   height: 100%;
   position: relative;
   overflow: hidden;
@@ -845,6 +928,10 @@ body.static .dive {
 /* .team-grid .team-card:nth-child(4) figure img {
   --img-ty: px;
 } */
+/* Domba — trop de plafond → remonte l'image */
+.team-grid .team-card:nth-child(7) figure img {
+  --img-ty: -20px;
+}
 
 .tc-body {
   position: absolute;
@@ -870,7 +957,7 @@ body.static .dive {
 }
 .team-card p {
   margin-top: 4px;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--mist);
   line-height: 1.5;
 }
@@ -882,6 +969,7 @@ body.static .dive {
 }
 .lead-card .tc-body {
   border-top-color: rgba(198, 162, 75, 0.35);
+  text-align: center;
 }
 .lead-card p {
   color: var(--gold-hi);
@@ -980,15 +1068,35 @@ body.static .dive {
   grid-template-columns: repeat(3, 1fr);
   gap: 14px;
 }
+.pillar-img {
+  margin: -34px -30px 22px;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+}
+.pillar-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.65;
+  transition:
+    opacity 0.4s,
+    transform 0.6s;
+}
+.pillar:hover .pillar-img img {
+  opacity: 0.85;
+  transform: scale(1.05);
+}
 .pillar {
   background: linear-gradient(
     170deg,
-    rgba(198, 162, 75, 0.09),
-    rgba(11, 42, 78, 0.36)
+    rgba(14, 32, 64, 0.72),
+    rgba(10, 24, 50, 0.82)
   );
   border: 1px solid rgba(198, 162, 75, 0.28);
   border-radius: 20px;
   padding: 34px 30px;
+  overflow: hidden;
   backdrop-filter: blur(6px);
   transition:
     transform 0.45s var(--ease),
@@ -1021,7 +1129,7 @@ body.static .dive {
 }
 .pillar li {
   font-size: 0.92rem;
-  color: var(--mist);
+  color: rgba(244, 247, 252, 0.78);
   font-weight: 300;
   line-height: 1.55;
   padding-left: 18px;
@@ -1052,12 +1160,13 @@ body.static .dive {
 .deck-card {
   position: sticky;
   border-radius: 24px;
-  background: #0b1f38;
+  background: #122640;
   border: 1px solid rgba(198, 162, 75, 0.3);
-  padding: clamp(34px, 5vw, 60px);
+  padding: 0;
   margin-bottom: 9vh;
-  display: block;
-  align-items: start;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  align-items: stretch;
   overflow: hidden;
   box-shadow: 0 -18px 60px -30px rgba(0, 0, 0, 0.7);
   will-change: transform;
@@ -1111,6 +1220,31 @@ body.static .dive {
 .card-veil {
   display: none;
 }
+.deck-card-img {
+  overflow: hidden;
+  border-radius: 24px 0 0 24px;
+  min-height: 280px;
+}
+.deck-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.85;
+  transition:
+    transform 0.6s var(--ease),
+    opacity 0.4s;
+}
+.deck-card:hover .deck-card-img img {
+  transform: scale(1.04);
+  opacity: 1;
+}
+.deck-card-body {
+  padding: clamp(34px, 5vw, 60px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 .deck-title {
   display: flex;
   align-items: center;
@@ -1160,7 +1294,7 @@ body.static .dive {
 
 /* ================= SPONSORING ================= */
 #sponsoring {
-  background: #010810;
+  background: #152e55;
 }
 #sponsoring::before {
   content: "";
@@ -1181,7 +1315,7 @@ body.static .dive {
       rgba(143, 166, 196, 0.012) 47px,
       rgba(143, 166, 196, 0.012) 48px
     ),
-    #010810;
+    #152e55;
 }
 .brand-ticker {
   overflow: hidden;
@@ -1292,7 +1426,7 @@ body.static .dive {
   gap: 14px;
 }
 .legal-card {
-  background: rgba(11, 42, 78, 0.34);
+  background: rgba(12, 28, 58, 0.78);
   border: 1px solid rgba(143, 166, 196, 0.14);
   border-radius: 18px;
   padding: 30px 28px;
@@ -1321,10 +1455,29 @@ body.static .dive {
 }
 .legal-card p {
   margin-top: 10px;
-  color: var(--mist);
+  color: rgba(244, 247, 252, 0.75);
   font-weight: 300;
   line-height: 1.8;
   font-size: 0.93rem;
+}
+.legal-card-img {
+  margin: -30px -28px 22px;
+  height: 130px;
+  overflow: hidden;
+  border-radius: 18px 18px 0 0;
+  position: relative;
+}
+.legal-card-img img {
+  width: 100%;
+  height: 100%;
+  opacity: 0.75;
+  transition:
+    opacity 0.4s,
+    transform 0.6s;
+}
+.legal-card:hover .legal-card-img img {
+  opacity: 0.9;
+  transform: scale(1.05);
 }
 .legal-vision {
   margin-top: 70px;
@@ -1395,7 +1548,7 @@ body.static .dive {
 .field input,
 .field textarea {
   width: 100%;
-  background: rgba(11, 42, 78, 0.32);
+  background: rgba(30, 66, 120, 0.32);
   border: 1px solid rgba(143, 166, 196, 0.22);
   border-radius: 12px;
   padding: 16px 18px;
@@ -1408,11 +1561,15 @@ body.static .dive {
     border-color 0.3s,
     background 0.3s;
 }
+.field input::placeholder,
+.field textarea::placeholder {
+  color: rgba(197, 214, 232, 0.72);
+}
 .field input:focus,
 .field textarea:focus {
   outline: none;
   border-color: rgba(198, 162, 75, 0.7);
-  background: rgba(11, 42, 78, 0.58);
+  background: rgba(30, 66, 120, 0.58);
   box-shadow:
     0 0 0 3px rgba(198, 162, 75, 0.08),
     inset 0 1px 0 rgba(198, 162, 75, 0.06);
@@ -1567,7 +1724,7 @@ body.static .dive {
   position: fixed;
   inset: 0;
   z-index: 80;
-  background: rgba(3, 11, 22, 0.82);
+  background: rgba(23, 54, 96, 0.82);
   backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
@@ -1588,7 +1745,7 @@ body.static .dive {
 }
 .modal-box {
   position: relative;
-  background: rgba(11, 42, 78, 0.7);
+  background: rgba(30, 66, 120, 0.7);
   border: 1px solid rgba(198, 162, 75, 0.3);
   border-radius: 20px;
   padding: 56px 48px;
@@ -1665,6 +1822,9 @@ body.static .dive {
   z-index: 1;
   border-top: 1px solid rgba(143, 166, 196, 0.13);
   padding: 40px 6vw;
+  padding-bottom: max(40px, calc(24px + env(safe-area-inset-bottom)));
+  padding-left: max(6vw, calc(6vw + env(safe-area-inset-left)));
+  padding-right: max(6vw, calc(6vw + env(safe-area-inset-right)));
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -1699,6 +1859,12 @@ body.static .dive {
 }
 
 /* ================= RESPONSIVE ================= */
+@media (max-width: 1100px) {
+  .team-grid {
+    grid-auto-rows: 260px;
+  }
+}
+
 @media (max-width: 900px) {
   :root {
     --header-h: 80px;
@@ -1717,19 +1883,27 @@ body.static .dive {
   }
   .deck-card {
     grid-template-columns: 1fr;
-    gap: 16px;
     min-height: auto;
+  }
+  .deck-card-img {
+    border-radius: 24px 24px 0 0;
+    min-height: 200px;
   }
   .band {
     padding: 100px 0;
   }
+  /* Team grid — 2-col uniforme, reset tous les spans */
   .team-grid {
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 260px;
+    grid-auto-rows: 280px;
   }
   .lead-card {
+    grid-column: auto;
+    grid-row: auto;
+    height: auto;
+  }
+  .team-grid .team-card:last-child:nth-child(odd) {
     grid-column: span 2;
-    grid-row: span 1;
   }
 }
 @media (max-width: 640px) {
@@ -1747,12 +1921,18 @@ body.static .dive {
     grid-template-columns: 1fr;
   }
   .team-grid {
-    grid-template-columns: 1fr;
-    grid-auto-rows: 300px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 220px;
   }
-  .lead-card {
+  .team-grid .team-card:last-child:nth-child(odd) {
+    grid-column: span 2;
+  }
+  .lead-card,
+  .tall-card,
+  .wide-card {
     grid-column: auto;
     grid-row: auto;
+    height: auto;
   }
 
   /* Spacing */
@@ -1785,18 +1965,14 @@ body.static .dive {
     padding: 26px 20px;
   }
 
-  /* Deck cards — reduce sticky offset gap on small screens */
-  .deck-card:nth-child(2) {
-    top: calc(var(--header-h) + 10px);
-  }
-  .deck-card:nth-child(3) {
-    top: calc(var(--header-h) + 20px);
-  }
-  .deck-card:nth-child(4) {
-    top: calc(var(--header-h) + 30px);
-  }
+  /* Deck cards — désactive sticky sur mobile, scroll normal */
   .deck-card {
-    margin-bottom: 5vh;
+    position: relative;
+    top: auto !important;
+    margin-bottom: 20px;
+  }
+  .deck-card-img {
+    min-height: 160px;
   }
 
   /* Brand ticker */

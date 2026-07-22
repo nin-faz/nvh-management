@@ -25,6 +25,12 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+// Hero video — fade in quand chargée
+const heroVideo = document.querySelector('.hero-video');
+if (heroVideo) {
+  heroVideo.addEventListener('canplay', () => heroVideo.classList.add('loaded'), { once: true });
+}
+
 // Accordéon Services Gold
 const goldToggle = document.getElementById("goldToggle");
 const subGold = document.getElementById("subGold");
@@ -128,13 +134,24 @@ form.addEventListener("submit", async (e) => {
   }
 });
 
-// Modale succès — fermeture
+// Modale succès — fermeture + focus trap
 const successModal = document.getElementById("successModal");
 const modalClose = document.getElementById("modalClose");
 function closeModal() { successModal.hidden = true; }
 modalClose.addEventListener("click", closeModal);
 successModal.addEventListener("click", (e) => { if (e.target === successModal) closeModal(); });
-document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !successModal.hidden) closeModal(); });
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && !successModal.hidden) { closeModal(); return; }
+  if (e.key === "Tab" && !successModal.hidden) {
+    const focusable = [...successModal.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])')];
+    if (!focusable.length) { e.preventDefault(); return; }
+    const first = focusable[0], last = focusable[focusable.length - 1];
+    if (e.shiftKey ? document.activeElement === first : document.activeElement === last) {
+      e.preventDefault();
+      (e.shiftKey ? last : first).focus();
+    }
+  }
+});
 
 /* ================= Fallback statique ================= */
 if (RM || !hasGSAP) {
