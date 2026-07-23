@@ -527,7 +527,8 @@ body.static .dive {
   z-index: 0;
   pointer-events: none;
 }
-.section-veil img {
+.section-veil img,
+.section-veil video {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -633,7 +634,8 @@ body.static .dive {
   mix-blend-mode: luminosity;
 }
 @media (prefers-reduced-motion: reduce) {
-  .gold-video {
+  .gold-video,
+  .section-veil video {
     display: none;
   }
 }
