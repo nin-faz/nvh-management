@@ -18,17 +18,33 @@ burger.addEventListener("click", () => {
   burger.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
 });
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && body.classList.contains("menu-open")) {
+  if (!body.classList.contains("menu-open")) return;
+  if (e.key === "Escape") {
     body.classList.remove("menu-open");
     burger.setAttribute("aria-expanded", "false");
     burger.focus();
+    return;
+  }
+  if (e.key === "Tab") {
+    const menuNav = document.getElementById("menu");
+    const focusable = [...menuNav.querySelectorAll('a,[href],button,[tabindex]:not([tabindex="-1"])')].filter(
+      (el) => !el.closest(".sub-wrap:not(.open)") && getComputedStyle(el).visibility !== "hidden"
+    );
+    focusable.unshift(burger);
+    if (!focusable.length) { e.preventDefault(); return; }
+    const first = focusable[0], last = focusable[focusable.length - 1];
+    if (e.shiftKey ? document.activeElement === first : document.activeElement === last) {
+      e.preventDefault();
+      (e.shiftKey ? last : first).focus();
+    }
   }
 });
 
-// Hero video — fade in quand chargée
-const heroVideo = document.querySelector('.hero-video');
-if (heroVideo) {
-  heroVideo.addEventListener('canplay', () => heroVideo.classList.add('loaded'), { once: true });
+// Vidéo fond — fade in quand chargée
+const bgVideo = document.querySelector('.bg-video');
+if (bgVideo) {
+  bgVideo.addEventListener('canplay', () => bgVideo.classList.add('loaded'), { once: true });
+  if (RM) bgVideo.pause();
 }
 
 // Accordéon Services Gold
@@ -137,7 +153,10 @@ form.addEventListener("submit", async (e) => {
 // Modale succès — fermeture + focus trap
 const successModal = document.getElementById("successModal");
 const modalClose = document.getElementById("modalClose");
-function closeModal() { successModal.hidden = true; }
+function closeModal() {
+  successModal.hidden = true;
+  submitButton.focus();
+}
 modalClose.addEventListener("click", closeModal);
 successModal.addEventListener("click", (e) => { if (e.target === successModal) closeModal(); });
 document.addEventListener("keydown", (e) => {
@@ -174,14 +193,26 @@ if (RM || !hasGSAP) {
     ScrollTrigger.normalizeScroll(true);
   }
 
+  // Scroll vers éléments focalisés au clavier (Lenis bloque le scroll natif)
+  let usingKeyboard = false;
+  document.addEventListener("keydown", () => { usingKeyboard = true; }, { capture: true });
+  document.addEventListener("mousedown", () => { usingKeyboard = false; }, { capture: true });
+  document.addEventListener("focusin", (e) => {
+    if (!usingKeyboard || !lenis) return;
+    if (body.classList.contains("menu-open")) return;
+    lenis.scrollTo(e.target, { offset: -120, duration: 0.4 });
+  });
+
   // Ancres via Lenis
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener("click", (e) => {
       const target = document.querySelector(a.getAttribute("href"));
       if (!target) return;
       e.preventDefault();
+      const menuWasOpen = body.classList.contains("menu-open");
       body.classList.remove("menu-open");
       burger.setAttribute("aria-expanded", "false");
+      if (menuWasOpen) burger.focus();
       if (lenis) lenis.scrollTo(target, { offset: -70, duration: 1.4 });
       else target.scrollIntoView({ behavior: "smooth" });
     });
@@ -196,7 +227,7 @@ if (RM || !hasGSAP) {
 
   // Entrée
   gsap.fromTo(
-    "#hero-stage",
+    "#intro-stage",
     { autoAlpha: 0, scale: 0.12, filter: "blur(22px)" },
     {
       autoAlpha: 1,
@@ -204,7 +235,7 @@ if (RM || !hasGSAP) {
       filter: "blur(0px)",
       duration: 1.6,
       ease: "expo.out",
-      onComplete: () => gsap.set("#hero-stage", { clearProps: "filter" }),
+      onComplete: () => gsap.set("#intro-stage", { clearProps: "filter" }),
     },
   );
   gsap.from("#scrollHint", { autoAlpha: 0, y: 10, duration: 0.8, delay: 0.7 });
@@ -260,7 +291,7 @@ if (RM || !hasGSAP) {
   gsap.utils.toArray(".eyebrow.reveal").forEach((el) => {
     gsap.from(el, {
       x: -20,
-      autoAlpha: 0,
+      opacity: 0,
       duration: 0.65,
       ease: "power2.out",
       scrollTrigger: { trigger: el, start: "top 89%" },
@@ -271,7 +302,7 @@ if (RM || !hasGSAP) {
   gsap.utils.toArray(".section-title.reveal").forEach((el) => {
     gsap.from(el, {
       y: 28,
-      autoAlpha: 0,
+      opacity: 0,
       duration: 1.1,
       ease: "power3.out",
       scrollTrigger: { trigger: el, start: "top 88%" },
@@ -282,7 +313,7 @@ if (RM || !hasGSAP) {
   gsap.utils.toArray(".team-grid").forEach((grid) => {
     gsap.from(grid.querySelectorAll(".team-card"), {
       y: 40,
-      autoAlpha: 0,
+      opacity: 0,
       scale: 0.96,
       duration: 0.85,
       ease: "power3.out",
@@ -295,7 +326,7 @@ if (RM || !hasGSAP) {
   gsap.utils.toArray(".pillars").forEach((grid) => {
     gsap.from(grid.querySelectorAll(".pillar"), {
       y: 32,
-      autoAlpha: 0,
+      opacity: 0,
       duration: 0.8,
       ease: "power3.out",
       stagger: 0.11,
@@ -307,7 +338,7 @@ if (RM || !hasGSAP) {
   gsap.utils.toArray(".values-list li").forEach((li, i) => {
     gsap.from(li, {
       x: 16,
-      autoAlpha: 0,
+      opacity: 0,
       duration: 0.6,
       ease: "power2.out",
       scrollTrigger: { trigger: li, start: "top 90%" },
@@ -319,7 +350,7 @@ if (RM || !hasGSAP) {
   gsap.utils.toArray(".legal-missions").forEach((grid) => {
     gsap.from(grid.querySelectorAll(".legal-card"), {
       y: 24,
-      autoAlpha: 0,
+      opacity: 0,
       duration: 0.75,
       ease: "power2.out",
       stagger: 0.09,
@@ -339,7 +370,7 @@ if (RM || !hasGSAP) {
       return;
     gsap.from(el, {
       y: 36,
-      autoAlpha: 0,
+      opacity: 0,
       duration: 0.95,
       ease: "power3.out",
       scrollTrigger: { trigger: el, start: "top 87%" },
