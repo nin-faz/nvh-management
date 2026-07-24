@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Mentions légales — N.V.H Management</title>
+    <meta name="robots" content="noindex" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;900&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="./assets/logo-nvh.svg" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <style>
+      /* ── Header légal ── */
+      .legal-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 8vw;
+        height: var(--header-h);
+        background: rgba(23, 54, 96, 0.85);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(143, 166, 196, 0.1);
+      }
+      .legal-header .brand {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        text-decoration: none;
+      }
+      .legal-header .brand .nvh {
+        font-family: "Archivo";
+        font-weight: 900;
+        font-size: 1.1rem;
+        letter-spacing: 0.06em;
+        color: var(--white);
+      }
+      .legal-header .brand .mgmt {
+        font-family: "Playfair Display";
+        font-style: italic;
+        font-size: 0.9rem;
+        color: var(--mist);
+        letter-spacing: 0.12em;
+      }
+      .legal-header .back {
+        font-family: "Inter", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: var(--mist);
+        text-decoration: none;
+        letter-spacing: 0.04em;
+        transition: color 0.2s;
+      }
+      .legal-header .back:hover,
+      .legal-header .back:focus-visible {
+        color: var(--white);
+      }
+
+      /* ── Layout ── */
+      .legal-body {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 72px 8vw 96px;
+      }
+      .legal-eyebrow {
+        font-family: "Archivo", sans-serif;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 16px;
+      }
+      .legal-body h1 {
+        font-family: "Archivo", sans-serif;
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+        font-weight: 700;
+        color: var(--white);
+        line-height: 1.15;
+        margin-bottom: 12px;
+      }
+      .legal-body .update {
+        font-family: "Inter", sans-serif;
+        font-size: 0.78rem;
+        color: var(--mist);
+        margin-bottom: 64px;
+      }
+
+      /* ── Sections ── */
+      .legal-section {
+        border-top: 1px solid rgba(143, 166, 196, 0.12);
+        padding: 40px 0;
+      }
+      .legal-section:last-child {
+        border-bottom: 1px solid rgba(143, 166, 196, 0.12);
+      }
+      .legal-section h2 {
+        font-family: "Archivo", sans-serif;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--mist);
+        margin-bottom: 20px;
+      }
+      .legal-section p,
+      .legal-section address {
+        font-family: "Inter", sans-serif;
+        font-size: 0.95rem;
+        color: var(--text);
+        line-height: 1.8;
+        font-style: normal;
+        margin-bottom: 6px;
+      }
+      .legal-section strong {
+        color: var(--white);
+        font-weight: 600;
+      }
+      .legal-section a {
+        color: var(--gold);
+        text-decoration: none;
+      }
+      .legal-section a:hover,
+      .legal-section a:focus-visible {
+        color: var(--gold-hi);
+        text-decoration: underline;
+      }
+      .todo {
+        color: #e09a9a;
+        font-style: italic;
+      }
+
+      /* ── Footer ── */
+      .site-footer {
+        margin-top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="legal-header">
+      <a class="brand" href="/" aria-label="N.V.H Management — Accueil">
+        <span class="nvh">N.V.H</span><span class="mgmt">Management</span>
+      </a>
+      <a class="back" href="/">← Retour au site</a>
+    </header>
+
+    <main class="legal-body">
+      <p class="legal-eyebrow">Informations légales</p>
+      <h1>Mentions légales</h1>
+      <p class="update">Dernière mise à jour : juillet 2026</p>
+
+      <div class="legal-section">
+        <h2>Éditeur du site</h2>
+        <address>
+          <strong>N.V.H Management</strong><br />
+          Forme juridique : SARL<br />
+          Avenue ALIJTIHAD N82 DIOUR ELHOMR CYM RABAT, MAROC / France<br />
+          SIRET : 002817847000031<br />
+          Email :
+          <a href="mailto:nvhmanagementfootball@gmail.com"
+            >nvhmanagementfootball@gmail.com</a
+          >
+        </address>
+      </div>
+
+      <div class="legal-section">
+        <h2>Directeur de la publication</h2>
+        <p>Deige-Forez Vina — Fondateur &amp; Président Directeur Général</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>Hébergeur</h2>
+        <address>
+          <strong>Netlify, Inc.</strong><br />
+          44 Montgomery Street, Suite 300<br />
+          San Francisco, CA 94104 — États-Unis<br />
+          <a
+            href="https://www.netlify.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            >www.netlify.com</a
+          >
+        </address>
+      </div>
+
+      <div class="legal-section">
+        <h2>Cookies</h2>
+        <p>
+          Ce site n'utilise pas de cookies de traçage ou de ciblage
+          publicitaire. Les seules données collectées sont celles que vous
+          transmettez volontairement via le formulaire de contact.
+        </p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 N.V.H Management — Tous droits réservés</span>
+      <nav aria-label="Liens légaux">
+        <a href="/mentions-legales.html" aria-current="page"
+          >Mentions légales</a
+        >
+        <a href="/politique-confidentialite.html"
+          >Politique de confidentialité</a
+        >
+      </nav>
+    </footer>
+  </body>
+</html>

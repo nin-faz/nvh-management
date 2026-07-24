@@ -949,9 +949,18 @@ body.static .dive {
 /* .team-grid .team-card:nth-child(4) figure img {
   --img-ty: px;
 } */
+
 /* Domba — trop de plafond → remonte l'image */
 .team-grid .team-card:nth-child(7) figure img {
   --img-ty: -20px;
+}
+/* Nino — trop de plafond → remonte l'image */
+.team-grid .team-card:nth-child(5) figure img {
+  --img-ty: -20px;
+}
+/* Fred — révèle un peu de col sans couper le front */
+.team-grid .team-card:nth-child(3) figure img {
+  --img-ty: -25px;
 }
 
 .tc-body {
@@ -1878,10 +1887,13 @@ body.static .dive {
 .site-footer a {
   color: var(--mist);
   text-decoration: none;
+  white-space: nowrap;
   transition: color 0.25s;
 }
-.site-footer a:hover {
+.site-footer a:hover,
+.site-footer a:focus-visible {
   color: var(--white);
+  text-decoration: underline;
 }
 
 /* ================= REDUCED MOTION / STATIQUE ================= */
