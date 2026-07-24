@@ -23,8 +23,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;900&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;900&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    </noscript>
     <link rel="icon" type="image/svg+xml" href="./assets/logo-nvh.svg" />
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
@@ -137,7 +142,7 @@
               muted
               loop
               playsinline
-              preload="auto"
+              preload="none"
             >
               <source src="./assets/video/multi-sport.mp4" type="video/mp4" />
             </video>
@@ -306,7 +311,11 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
       <section class="band" id="qui-sommes-nous" aria-labelledby="h2-qsn">
         <div class="section-veil" aria-hidden="true">
           <img
-            src="./assets/img/sections/qui-sommes-nous.jpg"
+            src="./assets/img/sections/qui-sommes-nous.webp"
+            srcset="./assets/img/sections/qui-sommes-nous-800w.webp 800w,
+                    ./assets/img/sections/qui-sommes-nous-1280w.webp 1280w,
+                    ./assets/img/sections/qui-sommes-nous.webp 1920w"
+            sizes="100vw"
             alt=""
             loading="lazy"
             onerror="this.style.display = 'none'"
@@ -349,7 +358,11 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
       <section class="band" id="notre-equipe" aria-labelledby="h2-equipe">
         <div class="section-veil" aria-hidden="true">
           <img
-            src="./assets/img/sections/notre-equipe.jpg"
+            src="./assets/img/sections/notre-equipe.webp"
+            srcset="./assets/img/sections/notre-equipe-800w.webp 800w,
+                    ./assets/img/sections/notre-equipe-1280w.webp 1280w,
+                    ./assets/img/sections/notre-equipe.webp 1920w"
+            sizes="100vw"
             alt=""
             loading="lazy"
             onerror="this.style.display = 'none'"
@@ -364,7 +377,10 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
             <article class="team-card lead-card reveal">
               <figure>
                 <img
-                  src="./assets/img/team/deige.jpg"
+                  src="./assets/img/team/deige.webp"
+                  srcset="./assets/img/team/deige-400w.webp 400w,
+                          ./assets/img/team/deige.webp 800w"
+                  sizes="(max-width: 768px) 100vw, 300px"
                   alt="Portrait de Deige-Forez Vina"
                 />
                 <div class="tc-body">
@@ -376,7 +392,10 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
             <article class="team-card reveal">
               <figure>
                 <img
-                  src="./assets/img/team/olivia.jpg"
+                  src="./assets/img/team/olivia.webp"
+                  srcset="./assets/img/team/olivia-400w.webp 400w,
+                          ./assets/img/team/olivia.webp 1071w"
+                  sizes="(max-width: 768px) 100vw, 200px"
                   alt="Portrait d'Olivia Ngaissio"
                 />
                 <div class="tc-body">
@@ -388,7 +407,10 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
             <article class="team-card reveal">
               <figure>
                 <img
-                  src="./assets/img/team/akissi.jpg"
+                  src="./assets/img/team/akissi.webp"
+                  srcset="./assets/img/team/akissi-400w.webp 400w,
+                          ./assets/img/team/akissi.webp 783w"
+                  sizes="(max-width: 768px) 100vw, 200px"
                   alt="Portrait d'Akissi Stanislas"
                 />
                 <div class="tc-body">
@@ -400,7 +422,10 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
             <article class="team-card reveal">
               <figure>
                 <img
-                  src="./assets/img/team/samir.jpg"
+                  src="./assets/img/team/samir.webp"
+                  srcset="./assets/img/team/samir-400w.webp 400w,
+                          ./assets/img/team/samir.webp 1200w"
+                  sizes="(max-width: 768px) 100vw, 200px"
                   alt="Portrait de Samir Bourebaba"
                 />
                 <div class="tc-body">
@@ -412,7 +437,10 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
             <article class="team-card reveal">
               <figure>
                 <img
-                  src="./assets/img/team/nino.jpg"
+                  src="./assets/img/team/nino.webp"
+                  srcset="./assets/img/team/nino-400w.webp 400w,
+                          ./assets/img/team/nino.webp 801w"
+                  sizes="(max-width: 768px) 100vw, 200px"
                   alt="Portrait de Nino Fazer"
                 />
                 <div class="tc-body">
@@ -424,7 +452,10 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
             <article class="team-card reveal">
               <figure>
                 <img
-                  src="./assets/img/team/lucien.jpg"
+                  src="./assets/img/team/lucien.webp"
+                  srcset="./assets/img/team/lucien-400w.webp 400w,
+                          ./assets/img/team/lucien.webp 1024w"
+                  sizes="(max-width: 768px) 100vw, 200px"
                   alt="Portrait de Lucien"
                 />
                 <div class="tc-body">
@@ -436,7 +467,10 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
             <article class="team-card reveal">
               <figure>
                 <img
-                  src="./assets/img/team/domba.jpg"
+                  src="./assets/img/team/domba.webp"
+                  srcset="./assets/img/team/domba-400w.webp 400w,
+                          ./assets/img/team/domba.webp 1200w"
+                  sizes="(max-width: 768px) 100vw, 200px"
                   alt="Portrait de Domba Abdoul Aziz"
                 />
                 <div class="tc-body">
@@ -456,7 +490,11 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
       <section class="band" id="notre-mission" aria-labelledby="h2-mission">
         <div class="section-veil" aria-hidden="true">
           <img
-            src="./assets/img/sections/notre-mission.jpg"
+            src="./assets/img/sections/notre-mission.webp"
+            srcset="./assets/img/sections/notre-mission-800w.webp 800w,
+                    ./assets/img/sections/notre-mission-1280w.webp 1280w,
+                    ./assets/img/sections/notre-mission.webp 1920w"
+            sizes="100vw"
             alt=""
             loading="lazy"
             onerror="this.style.display = 'none'"
@@ -514,7 +552,7 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
       <!-- ============ SERVICES GOLD ============ -->
       <section class="band gold-section" id="services-gold" aria-labelledby="h2-gold">
         <div class="section-veil" aria-hidden="true">
-          <video class="gold-video" autoplay muted loop playsinline>
+          <video class="gold-video" autoplay muted loop playsinline preload="none">
             <source src="./assets/video/gold.mp4" type="video/mp4" />
           </video>
         </div>
@@ -533,7 +571,7 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
             <article class="pillar reveal">
               <div class="pillar-img">
                 <img
-                  src="./assets/img/pillars/qualite-vie.jpg"
+                  src="./assets/img/pillars/qualite-vie.webp"
                   alt=""
                   loading="lazy"
                   onerror="this.closest('.pillar-img').style.display = 'none'"
@@ -550,7 +588,7 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
             <article class="pillar reveal">
               <div class="pillar-img">
                 <img
-                  src="./assets/img/pillars/performances.jpg"
+                  src="./assets/img/pillars/performances.webp"
                   alt=""
                   loading="lazy"
                   onerror="this.closest('.pillar-img').style.display = 'none'"
@@ -591,7 +629,7 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
             <article class="deck-card" id="gestion-carriere">
               <div class="deck-card-img">
                 <img
-                  src="./assets/img/deck/gestion-carriere.jpg"
+                  src="./assets/img/deck/gestion-carriere.webp"
                   alt=""
                   loading="lazy"
                   onerror="
@@ -625,7 +663,7 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
             <article class="deck-card" id="conciergerie">
               <div class="deck-card-img">
                 <img
-                  src="./assets/img/deck/conciergerie.jpg"
+                  src="./assets/img/deck/conciergerie.webp"
                   alt=""
                   loading="lazy"
                   onerror="
@@ -663,7 +701,7 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
             <article class="deck-card" id="data">
               <div class="deck-card-img">
                 <img
-                  src="./assets/img/deck/data.jpg"
+                  src="./assets/img/deck/data.webp"
                   alt=""
                   loading="lazy"
                   onerror="
@@ -705,7 +743,7 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
             <article class="deck-card" id="marketing-digital">
               <div class="deck-card-img">
                 <img
-                  src="./assets/img/deck/marketing.jpg"
+                  src="./assets/img/deck/marketing.webp"
                   alt=""
                   loading="lazy"
                   onerror="
@@ -747,7 +785,16 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
       <!-- ============ SPONSORING ============ -->
       <section class="band" id="sponsoring" aria-labelledby="h2-sponsoring">
         <div class="section-veil" aria-hidden="true">
-          <img src="./assets/img/sections/sponsoring.jpg" alt="" loading="lazy" onerror="this.style.display='none'" />
+          <img
+            src="./assets/img/sections/sponsoring.webp"
+            srcset="./assets/img/sections/sponsoring-800w.webp 800w,
+                    ./assets/img/sections/sponsoring-1280w.webp 1280w,
+                    ./assets/img/sections/sponsoring.webp 1920w"
+            sizes="100vw"
+            alt=""
+            loading="lazy"
+            onerror="this.style.display='none'"
+          />
         </div>
         <div class="inner">
           <p class="eyebrow reveal">Sponsoring</p>
@@ -842,7 +889,11 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
       <section class="band" id="protection-juridique" aria-labelledby="h2-juridique">
         <div class="section-veil" aria-hidden="true">
           <img
-            src="./assets/img/sections/juridique.jpg"
+            src="./assets/img/sections/juridique.webp"
+            srcset="./assets/img/sections/juridique-800w.webp 800w,
+                    ./assets/img/sections/juridique-1280w.webp 1280w,
+                    ./assets/img/sections/juridique.webp 1920w"
+            sizes="100vw"
             alt=""
             loading="lazy"
             onerror="this.style.display = 'none'"
@@ -877,7 +928,7 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
             <article class="legal-card reveal">
               <div class="legal-card-img">
                 <img
-                  src="./assets/img/legal/contractuel.jpg"
+                  src="./assets/img/legal/contractuel.webp"
                   alt=""
                   loading="lazy"
                   onerror="
@@ -895,7 +946,7 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
             <article class="legal-card reveal">
               <div class="legal-card-img">
                 <img
-                  src="./assets/img/legal/interets.jpg"
+                  src="./assets/img/legal/interets.webp"
                   alt=""
                   loading="lazy"
                   onerror="
@@ -912,7 +963,7 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
             <article class="legal-card reveal">
               <div class="legal-card-img">
                 <img
-                  src="./assets/img/legal/famille.jpg"
+                  src="./assets/img/legal/famille.webp"
                   alt=""
                   loading="lazy"
                   onerror="
@@ -930,7 +981,7 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
             <article class="legal-card reveal">
               <div class="legal-card-img">
                 <img
-                  src="./assets/img/legal/international.jpg"
+                  src="./assets/img/legal/international.webp"
                   alt=""
                   loading="lazy"
                   onerror="
@@ -949,7 +1000,7 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
             <article class="legal-card reveal">
               <div class="legal-card-img">
                 <img
-                  src="./assets/img/legal/prevention.jpg"
+                  src="./assets/img/legal/prevention.webp"
                   alt=""
                   loading="lazy"
                   onerror="
@@ -967,7 +1018,7 @@ l30 0 0 124 c0 104 -3 125 -16 130 -19 7 -15 8 -39 -6z"
             <article class="legal-card reveal">
               <div class="legal-card-img">
                 <img
-                  src="./assets/img/legal/transmission.jpg"
+                  src="./assets/img/legal/transmission.webp"
                   alt=""
                   loading="lazy"
                   onerror="
